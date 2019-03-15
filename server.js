@@ -30,7 +30,7 @@ app.get("/api/timestamp/:date_string?", (req, res) => {
     ? req.params.date_string
     : Number(req.params.date_string) * 1000;
   const finalDate = date ? new Date(date) : new Date();
-  res.json({ unix: finalDate.getTime(), utc: finalDate.toUTCString(), date });
+  res.json({ unix: finalDate.getTime(), utc: finalDate.toUTCString() });
 });
 
 // listen for requests :)
