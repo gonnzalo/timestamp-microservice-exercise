@@ -26,7 +26,9 @@ app.get("/api/hello", (req, res) => {
 });
 
 // listen for requests :)
-const listener = app.listen(process.env.PORT, () => {
+const listener = app.listen(process.env.PORT || 3000, () => {
   // eslint-disable-next-line no-console
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
+
+listener.close();
