@@ -25,10 +25,15 @@ app.get("/api/hello", (req, res) => {
   res.json({ greeting: "hello API" });
 });
 
+app.get("/api/timestamp/:date_string?", (req, res) => {
+  const date = req.params.date_string
+    ? new Date(req.params.date_string)
+    : new Date();
+  res.json({ unix: date.getTime(), utc: date.toUTCString() });
+});
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT || 3000, () => {
   // eslint-disable-next-line no-console
   console.log(`Your app is listening on port ${listener.address().port}`);
 });
-
-listener.close();
